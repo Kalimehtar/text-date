@@ -3,7 +3,7 @@
 (require racket/date racket/string)
 
 (define (string->date str)
-  (define-values (dd mm yyyy) (string-split str "."))
+  (define-values (dd mm yyyy) (split-date (string-split str ".")))
   (format-date (seconds->date (get-seconds dd mm yyyy))))
 
 (define (today-data)
