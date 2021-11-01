@@ -64,8 +64,8 @@
     (super-new [callback (lambda (c e)
                            (unless showing-cue?
                              (when (eq? (send e get-event-type) 'text-field-enter)
-                               (process-complete-date!))
-                             (when callback (callback c e))))])
+                               (process-complete-date!)))
+                           (when callback (callback c e)))])
     (define showing-cue? #f)
     (define cue "01.01.2021")
     (update-cue!)
