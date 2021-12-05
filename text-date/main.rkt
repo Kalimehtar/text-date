@@ -14,6 +14,8 @@
     (define (update-cue!)
       (define-values (secs-to-next-day today) (today-data))
       (set! cue today)
+      (clear-cue)
+      (insert-cue-or-filter-chars!)
       (new timer%
            [notify-callback (lambda () (update-cue!))]
            [interval (* 1000 secs-to-next-day)]
@@ -68,8 +70,7 @@
                            (when callback (callback c e)))])
     (define showing-cue? #f)
     (define cue "01.01.2021")
-    (update-cue!)
-    (insert-cue-or-filter-chars!)))
+    (update-cue!)))
 
 (define cue-text-style
   (let ((grey-text (new style-delta%)))
